@@ -12,7 +12,7 @@ $(document).ready(function() {
             //do you want to go back? to go back, say "go back"
             //do you want to listen to the categories again, say "go to categories"
             pausePrompt();
-        }
+        },
         onend: function() {
             endPrompt();
         }
@@ -20,17 +20,21 @@ $(document).ready(function() {
     });
 
     //play welcome.mp3
-    var masterPrompt = new Howl({
-        urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/welcome.mp3"],
-    });
-    masterPrompt.play();
-    sleep(30000); //12000
+    // var masterPrompt = new Howl({
+    //     urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/welcome.mp3"],
+    //     onend: function() {
+    //         categoriesprompt();
+    //     }
+    // });
+    // masterPrompt.play();
+    categoriesprompt(); // test
+    // sleep(7000); //12000
 
     //play cateforiesprompt.mp3.
     //wait for user to say "get category". then it will go to fetchCategory
-    promptPlayAgian()
-   // sleep(30000); //20000
-    playAgian();
+   //  promptPlayAgian()
+   // // sleep(30000); //20000
+   //  playAgian();
 
     if (annyang) {
         console.log("checking");
@@ -42,24 +46,24 @@ $(document).ready(function() {
             "next :title" : playTitle, //read the next title
             "go back" : function() {
                 index = -1;
-                playTitle, //when you are on article, goes back to titles. 
-            }, 
+                playTitle(); //when you are on article, goes back to titles.
+            },
             "go to categories": function() {
                 categoriesprompt();
-            }
+            },
             "pause" : function() {
-                masterArticle.pause(); 
+                masterArticle.pause();
             },
             "resume :article" : function() {
                 masterArticle.play();
             }
-            
+
         };
 
         annyang.addCommands(commands);
 
-        annyang.debug();
-        annyang.start();
+        // annyang.debug();
+        // annyang.start();
     }
 
     function fetchCategory(category) {
@@ -80,63 +84,104 @@ $(document).ready(function() {
             listOfAudios[i] = audio[i];
         }
 
-        
-        masterPrompt.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/titleprompt';
-        masterPrompt.play;
-        sleep(30000); 
-        playTitle();
+
+        // masterPrompt.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/titleprompt';
+        masterPrompt = new Howl({
+            urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/titleprompt.mp3"],
+            onend: function() {
+                playTitle();
+            }
+        });
+
+
+        masterPrompt.play();
+
+        // playTitle();
     }
 
     function sleep(miliseconds) {
            var currentTime = new Date().getTime();
 
            while (currentTime + miliseconds >= new Date().getTime()) {
+               console.log("sleeping");
            }
     }
 
-    function playTitle() {
+    function playTitle(title) {
 
         console.log(index);
         index++;
         if(index < listOfAudios.length) {
             var titlename = listOfAudios[index].titlename;
-            masterPrompt.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/' + titlename;
+            console.log(titlename);
+            console.log("in here!");
+            // masterPrompt.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/' + titlename;
+            masterPrompt = new Howl({
+                urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/" + titlename],
+            });
+
             masterPrompt.play();
-            promptPlayAgian();
+            // promptPlayAgian();
+
+
             //wait for user to respond-> 1. play article 2.next title or after 10 seconds, it will play
             //the title agian
         }
     }
 
-    function playArticle() {
+    function playArticle(article) {
         var articlename = listOfAudios[index].articlename;
-        masterArticle.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/' + articlename;
+        console.log(articlename);
+        // masterArticle.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/' + articlename;
+        masterArticle = new Howl({
+            urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/" + articlename],
+            onpause: function() {
+                //do you want to go back? to go back, say "go back"
+                //do you want to listen to the categories again, say "go to categories"
+                pausePrompt();
+            },
+            onend: function() {
+                endPrompt();
+            }
+        });
         masterArticle.play();
     }
 
     //called by onend
     function endPrompt() {
-        masterPrompt.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/endprompt.mp3';
+        masterPrompt = new Howl({
+            urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/endprompt.mp3"],
+        });
         masterPrompt.play();
-        promptPlayAgian();
+        // promptPlayAgian();
     }
 
     //called by onpause
     function pausePrompt() {
-        masterPrompt.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/pauseprompt.mp3';
+        masterPrompt = new Howl({
+            urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/pauseprompt.mp3"],
+        });
         masterPrompt.play();
-        promptPlayAgian();
+        // promptPlayAgian();
     }
 
     //called by "go to categories"
     function categoriesprompt() {
-        masterPrompt.urls[0] = "http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/categoriesprompt.mp3";
+        console.log("categories prompt");
+        // masterPrompt.urls = ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/categoriesprompt.mp3"];
+        masterPrompt = new Howl({
+            urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/categoriesprompt.mp3"],
+            onend: function() {
+                annyang.debug();
+                annyang.start();
+            }
+        });
         masterPrompt.play();
-        promptPlayAgian();
+        //promptPlayAgian();
     }
 
-    function promptPlayAgian() {
-        setTimeout(function(){ masterPrompt().play() }, 10000);
-    }
+    // function promptPlayAgian() {
+    //     setTimeout(function(){ masterPrompt().play() }, 10000);
+    // }
 
 });
