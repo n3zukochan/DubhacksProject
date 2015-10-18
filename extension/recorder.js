@@ -11,6 +11,8 @@ var audioContext = null;
 var context = null;
 var outputString;
 var fd = new FormData();
+var titleBlop = null;
+var articleBlop = null;
 
 // feature detection 
 if (!navigator.getUserMedia)
@@ -31,39 +33,56 @@ $(document).ready(function() {
 
 // Start recording title
 $(document).on("click", "#titleMic", function() {
-    $("#titleMic").addClass('clicked');
     $("#titleStop").prop('disabled', false);
 
-    recording = true;
-    // reset the buffers for the new recording
-    leftchannel.length = rightchannel.length = 0;
-    recordingLength = 0;
-    $('#output').text('Recording now...');
-    // if stop button is clicked, we stop the recording and package the WAV file
+    var _this = $("#titleMic img");
+    var current = _this.attr("src");
+    var swap = _this.attr("data-swap");
+    _this.attr("src", swap).attr("data-swap", current);
+
+    if (/pause/i.test(current)) {
+        recording = false;
+    } else if (/Ready/i.test($('#titleFlag').text())) {
+        recording = true;
+        // reset the buffers for the new recording
+        leftchannel.length = rightchannel.length = 0;
+        recordingLength = 0;
+        $('#titleFlag').text('Recording now...');
+    } else {
+        recording = true;
+    }
 });
 
 // Start recording article
 $(document).on("click", "#articleMic", function() {
-    $("#articleMic").addClass('clicked');
     $("#articleStop").prop('disabled', false);
 
-    recording = true;
-    // reset the buffers for the new recording
-    leftchannel.length = rightchannel.length = 0;
-    recordingLength = 0;
-    $('#output').text('Recording now...');
-    // if stop button is clicked, we stop the recording and package the WAV file
+    var _this = $("#articleMic img");
+    var current = _this.attr("src");
+    var swap = _this.attr("data-swap");
+    _this.attr("src", swap).attr("data-swap", current);
+
+    if (/pause/i.test(current)) {
+        recording = false;
+    } else if (/Ready/i.test($('#articleFlag').text())) {
+        recording = true;
+        // reset the buffers for the new recording
+        leftchannel.length = rightchannel.length = 0;
+        recordingLength = 0;
+        $('#articleFlag').text('Recording now...');
+    } else {
+        recording = true;
+    }
 });         
 
-var titleBlop;
-var articleBlop;
 // Click to stop recording title
 $(document).on("click", "#titleStop", function() {
+    $("#titleMic").prop('disabled', true);
     $("#titleStop").prop('disabled', true);
     // we stop recording
     recording = false;
 
-    $('#output').text('Building wav file...');
+    $('#titleFlag').text('Building mp3 file...');
 
     // we flat the left and right channels down
     var leftBuffer = mergeBuffers ( leftchannel, recordingLength );
@@ -102,10 +121,10 @@ $(document).on("click", "#titleStop", function() {
         index += 2;
     }
     // our final binary blob
-    var titleBlop = new Blob ( [ view ], { type : 'audio/mp3' } );
+    titleBlop = new Blob ( [ view ], { type : 'audio/mp3' } );
 
     // let's save it locally
-    $('#output').text('Handing off the file now...');
+    $('#titleFlag').text('Handing off the file now...');
 
     fd.append("titleName", 'test.mp3');
     fd.append("titleFile", titleBlop);
@@ -113,11 +132,12 @@ $(document).on("click", "#titleStop", function() {
 
 // Click to stop recording article
 $(document).on("click", "#articleStop", function() {
+    $("#articleMic").prop('disabled', true);
     $("#articleStop").prop('disabled', true);
     // we stop recording
     recording = false;
 
-    $('#output').text('Building wav file...');
+    $('#articleFlag').text('Building mp3 file...');
 
     // we flat the left and right channels down
     var leftBuffer = mergeBuffers ( leftchannel, recordingLength );
@@ -156,10 +176,10 @@ $(document).on("click", "#articleStop", function() {
         index += 2;
     }
     // our final binary blob
-    var articleBlop = new Blob ( [ view ], { type : 'audio/mp3' } );
+    articleBlop = new Blob ( [ view ], { type : 'audio/mp3' } );
 
     // let's save it locally
-    $('#output').text('Handing off the file now...');
+    $('#articleFlag').text('Handing off the file now...');
 
     fd.append("articleName", 'test.mp3');
     fd.append("articleFile", articleBlop);
