@@ -48,8 +48,9 @@ $(document).ready(function() {
                 index = -1;
                 playTitle(); //when you are on article, goes back to titles.
             },
-            "go to categories": function() {
+            "go to categories": function(text) {
                 categoriesprompt();
+                console.log(text);
             },
             "pause" : function() {
                 masterArticle.pause();
@@ -62,20 +63,20 @@ $(document).ready(function() {
 
         annyang.addCommands(commands);
 
-        annyang.debug([newState=true]);
+        annyang.debug();
         annyang.start();
     }
 
     function fetchCategory(category) {
-       var URL = "http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/webservice_final.php?category='" + category + "'";
-       $.ajax({
-           url: URL,
-           type: 'get',
-           complete: function(audio) {
-               console.log(audio.responseText)
-               processAudio(audio.responseText);
-           }
-       });
+        var URL = "http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/webservice_final.php?category='" + category + "'";
+        $.ajax({
+            url: URL,
+            type: 'get',
+            complete: function(audio) {
+                console.log(audio.responseText)
+            processAudio(audio.responseText);
+            }
+        });
     }
 
     function processAudio(audio) {
@@ -88,9 +89,9 @@ $(document).ready(function() {
         // masterPrompt.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/titleprompt';
         masterPrompt = new Howl({
             urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/titleprompt.mp3"],
-            onend: function() {
-                playTitle();
-            }
+                     onend: function() {
+                         playTitle();
+                     }
         });
 
 
@@ -100,11 +101,11 @@ $(document).ready(function() {
     }
 
     function sleep(miliseconds) {
-           var currentTime = new Date().getTime();
+        var currentTime = new Date().getTime();
 
-           while (currentTime + miliseconds >= new Date().getTime()) {
-               console.log("sleeping");
-           }
+        while (currentTime + miliseconds >= new Date().getTime()) {
+            console.log("sleeping");
+        }
     }
 
     function playTitle(title) {
@@ -135,14 +136,14 @@ $(document).ready(function() {
         // masterArticle.urls[0] = 'http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/' + articlename;
         masterArticle = new Howl({
             urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/" + articlename],
-            onpause: function() {
-                //do you want to go back? to go back, say "go back"
-                //do you want to listen to the categories again, say "go to categories"
-                pausePrompt();
-            },
-            onend: function() {
-                endPrompt();
-            }
+                      onpause: function() {
+                          //do you want to go back? to go back, say "go back"
+                          //do you want to listen to the categories again, say "go to categories"
+                          pausePrompt();
+                      },
+                      onend: function() {
+                          endPrompt();
+                      }
         });
         masterArticle.play();
     }
@@ -171,10 +172,10 @@ $(document).ready(function() {
         // masterPrompt.urls = ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/categoriesprompt.mp3"];
         masterPrompt = new Howl({
             urls: ["http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/audio/categoriesprompt.mp3"],
-            onend: function() {
-                annyang.debug();
-                annyang.start();
-            }
+                     onend: function() {
+                         annyang.debug();
+                         annyang.start();
+                     }
         });
         masterPrompt.play();
         //promptPlayAgian();
