@@ -1,17 +1,11 @@
 {
+	"name": "Audio Recording and Storing",
+	"description": "Records an audio input from the user and stores if in a database for later use.",
+	"version": "0.1",
 	"manifest_version": 2,
-
-	"name": "",
-	"description": "This extension allows a user to record an audio file of a news article and submit it to a server that stores it for reading to other users.",
-	"version": "1.0",
-	
-	"browser_action": {
-		"default_icon": "microphone.png",
-		"default_popup": "recorder.html",
-		"default_title": "record file"
-	},
-	"permissions": [
-		"activeTab",
-		"https://ajax.googleapis.com/"
-	]
+	"app": {
+		"background": {
+		"scripts": ["background.js"]
+		}
+	}
 }
