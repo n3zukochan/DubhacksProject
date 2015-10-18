@@ -11,7 +11,7 @@ $(document).ready(function() {
 });
 
    function fetchCategory(category) {
-       var URL = "ec2-52-89-34-199.us-west-2.compute.amazonaws.com/webservice_final.php?category=" + category;  
+       var URL = "http://ec2-52-89-34-199.us-west-2.compute.amazonaws.com/webservice.php?category=" + category;
        $.ajax({
            url: URL,
            type: 'GET',
@@ -24,15 +24,14 @@ $(document).ready(function() {
 
    function processAudio(audio) {
        var audio = JSON.parse(audio);
-       
-       var text = $("test");
+
+    //    var text = $("test");
 
        for (var i = 0; i < audio.length; i++) {
-           // test.append("<li>File name: " + audio[i].filename + " Tile name:" 
+           // test.append("<li>File name: " + audio[i].filename + " Tile name:"
            //     + audio[i].titlename + "</li>");
             console.log(audio[i]);
 
        }
 
    };
-
