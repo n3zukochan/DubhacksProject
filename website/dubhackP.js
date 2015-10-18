@@ -62,7 +62,7 @@ $(document).ready(function() {
 
         annyang.addCommands(commands);
 
-        annyang.debug();
+        annyang.debug([newState=true]);
         annyang.start();
     }
 
