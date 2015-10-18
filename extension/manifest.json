@@ -3,7 +3,7 @@
 
 	"description": "Records an audio input from the user and uses it to read news articles to people who are visually impaired.",
 
-	"version": "0.1",
+	"version": "0.2",
 
 	"manifest_version": 2,
 
