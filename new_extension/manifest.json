@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Audio File Upload",
+  "name": "Audio News Submit",
   "description": "This extension allows a user to upload an audio news reading.",
   "version": "1.0",
 

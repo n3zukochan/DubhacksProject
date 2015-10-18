@@ -1,7 +1,7 @@
 {
 	"name": "Speak The News",
 
-	"description": "Records an audio input from the user and stores if in a database for later use.",
+	"description": "Records an audio input from the user and uses it to read news articles to people who are visually impaired.",
 
 	"version": "0.1",
 
