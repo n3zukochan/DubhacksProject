@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
 				
 		<script src="jquery-1.11.3.min.js"></script>
-        <!--<script src="script.js" type="text/javascript"></script>-->
         <script src="recorder.js" type="text/javascript"></script>
 		
 		<style>
@@ -22,57 +21,55 @@
 	</head>
 	
 	<body>
-        <!-- Debugging code -->
+        <!-- Flag -->
         <p id="titleFlag" style="display:none"> Ready to record!</p>
         <p id="articleFlag" style="display:none"> Ready to record!</p>
+
 		<div class="container-fluid">
 			<div id="top-row" class="row">
                 <div class="col-xs-2"></div>
+
 				<div class="col-xs-2"><h4>Title:</h4></div>
+
 				<div class="col-xs-2">
 					<button type="button" id="titleMic"><img src="mic.png" alt="record" data-swap="pause.png"></button>
 					<p>record</p>
 				</div>
+
 				<div class="col-xs-2">
 					<button type="button" id="titleStop"><img src="stop.png" alt="stop"></button>
 					<p>stop</p>
 				</div>
-                <!--
+                
 				<div class="col-xs-2">
-					<button type="button" id="titlePlayButton"><img src="play.png" alt="play" class="play" id="titlePlayPic"></button>
-					<p>play/pause</p>
-				</div>
-                -->
-				<div class="col-xs-2">
-					<button type="button"><img src="backward.png" alt="backwards"></button>
-					<p>beginning</p>
+					<button type="button" id="titleReset"><img src="backward.png" alt="backwards"></button>
+					<p>reset</p>
 				</div>
 			</div>
 				
-			<div id="bot-row" class="row">
+			<div class="row">
                 <div class="col-xs-2"></div>
+
 				<div class="col-xs-2"><h4>Article:</h4></div>
+
 				<div class="col-xs-2">
 					<button type="button" id="articleMic"><img src="mic.png" alt="record" data-swap="pause.png"></button>
 					<p>record</p>
 				</div>
+
 				<div class="col-xs-2">
 					<button type="button" id="articleStop"><img src="stop.png" alt="stop"></button>
 					<p>stop</p>
 				</div>
-                <!--
+
 				<div class="col-xs-2">
-					<button type="button" id="articlePlayButton"><img src="play.png" alt="play" class="play" id="articlePlayPic"></button>
-					<p>play/pause</p>
-				</div>
-                -->
-				<div class="col-xs-2">
-					<button type="button"><img src="backward.png" alt="backwards"></button>
-					<p>beginning</p>
+					<button type="button" id="articleReset"><img src="backward.png" alt="backwards"></button>
+					<p>reset</p>
 				</div>
 			</div>
+
 			<div class="row">
-			<div class="col-xs-1"></div>
+			    <div class="col-xs-1"></div>
                 <div class="col-xs-2"></div>
 				<div class="col-xs-2" id="categoryLabel">Category:</div>
 				<div class="col-xs-2">
@@ -88,8 +85,8 @@
 					</select>
 				</div>
 				<div class="col-xs-2"></div>
-				
             </div>
+
             <div class="row">
                 <div class="col-xs-9"></div>
                 <div class="col-xs-2">
@@ -97,13 +94,12 @@
                 </div>
             </div>
             <!-- 
-            <div>Icons made by <a href="http://www.flaticon.com/authors/yannick" title="Yannick">Yannick</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-            <div>Icons made by <a href="http://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-
+            <div>Icons made by <a href="http://www.flaticon.com/authors/yannick" title="Yannick">Yannick</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+            <div>Icons made by <a href="http://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
             -->
         </div>
-        </body>
-        </html>
+    </body>
+</html>

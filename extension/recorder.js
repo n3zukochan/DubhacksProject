@@ -33,8 +33,6 @@ $(document).ready(function() {
 
 // Start recording title
 $(document).on("click", "#titleMic", function() {
-    $("#titleStop").prop('disabled', false);
-
     var _this = $("#titleMic img");
     var current = _this.attr("src");
     var swap = _this.attr("data-swap");
@@ -42,20 +40,25 @@ $(document).on("click", "#titleMic", function() {
 
     if (/pause/i.test(current)) {
         recording = false;
+        $("#titleStop").prop('disabled', false);
+        $("button").prop('disabled', false);
     } else if (/Ready/i.test($('#titleFlag').text())) {
         recording = true;
         // reset the buffers for the new recording
         leftchannel.length = rightchannel.length = 0;
         recordingLength = 0;
         $('#titleFlag').text('Recording now...');
+        $("button").prop('disabled', true);
+        $(this).prop('disabled', false);
     } else {
         recording = true;
+        $("button").prop('disabled', true);
+        $(this).prop('disabled', false);
     }
 });
 
 // Start recording article
 $(document).on("click", "#articleMic", function() {
-    $("#articleStop").prop('disabled', false);
 
     var _this = $("#articleMic img");
     var current = _this.attr("src");
@@ -64,14 +67,20 @@ $(document).on("click", "#articleMic", function() {
 
     if (/pause/i.test(current)) {
         recording = false;
+        $("#articleStop").prop('disabled', false);
+        $("button").prop('disabled', false);
     } else if (/Ready/i.test($('#articleFlag').text())) {
         recording = true;
         // reset the buffers for the new recording
         leftchannel.length = rightchannel.length = 0;
         recordingLength = 0;
         $('#articleFlag').text('Recording now...');
+        $("button").prop('disabled', true);
+        $(this).prop('disabled', false);
     } else {
         recording = true;
+        $("button").prop('disabled', true);
+        $(this).prop('disabled', false);
     }
 });         
 
@@ -125,9 +134,6 @@ $(document).on("click", "#titleStop", function() {
 
     // let's save it locally
     $('#titleFlag').text('Handing off the file now...');
-
-    fd.append("titleName", 'test.mp3');
-    fd.append("titleFile", titleBlop);
 });
 
 // Click to stop recording article
@@ -180,12 +186,27 @@ $(document).on("click", "#articleStop", function() {
 
     // let's save it locally
     $('#articleFlag').text('Handing off the file now...');
+});
 
-    fd.append("articleName", 'test.mp3');
-    fd.append("articleFile", articleBlop);
+$(document).on("click", "#titleReset", function() {
+    $("#titleMic").prop('disabled', false);
+    $("#titleStop").prop('disabled', false);
+    titleBlop = null;
+    leftchannel.length = rightchannel.length = 0;
+    recordingLength = 0;
+});
+
+$(document).on("click", "#articleReset", function() {
+    $("#articleMic").prop('disabled', false);
+    $("#articleStop").prop('disabled', false);
+    articleBlop = null;
+    leftchannel.length = rightchannel.length = 0;
+    recordingLength = 0;
 });
 
 $(document).on("click", "#upload", function() {
+    fd.append("titleFile", titleBlop);
+    fd.append("articleFile", articleBlop);
     var cate = $('#category').val();
     fd.append("category", cate);
 
@@ -274,7 +295,3 @@ function success(e){
     volume.connect (recorder);
     recorder.connect (context.destination); 
 }
-
-$("#myform").bind('ajax:complete', function() {
-    alert("Works"); 
-});
