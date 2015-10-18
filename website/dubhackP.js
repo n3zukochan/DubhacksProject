@@ -27,7 +27,7 @@ $(document).ready(function() {
     //     }
     // });
     // masterPrompt.play();
-    categoriesprompt(); // test
+    // categoriesprompt(); // test
     // sleep(7000); //12000
 
     //play cateforiesprompt.mp3.
@@ -62,8 +62,8 @@ $(document).ready(function() {
 
         annyang.addCommands(commands);
 
-        // annyang.debug();
-        // annyang.start();
+        annyang.debug();
+        annyang.start();
     }
 
     function fetchCategory(category) {
