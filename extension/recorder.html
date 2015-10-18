@@ -1,9 +1,69 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		
+		<style type="text/css">
+			div.inline {
+				display: inline;
+			}
+		</style>
 	</head>
 	
 	<body>
-		<h1>Hello, World!</h1>
+		<div class="container-fluid">
+			<form>
+				Title
+				<div class="row">
+					<div class="inline">
+						<button><i class="fa fa-play-circle fa-2x"></i></button>
+						<p>record</p>
+					</div>
+					<div class="inline">
+						<button><i class="fa fa-stop fa-2x"></i></button>
+						<p>stop</p>
+					</div>
+					<div class="inline">
+						<button><i class="fa fa-play fa-2x"></i></button>
+						<p>play/pause</p>
+					</div>
+					<div class="inline">
+						<button><i class="fa fa-step-backward fa-2x"></i></button>
+						<p>beginning</p>
+					</div>
+				</div>
+				
+				Article
+				<div class="row">
+					<div class="inline">
+						<button><i class="fa fa-play-circle fa-2x"></i></button>
+						<p>record</p>
+					</div>
+					<div class="inline">
+						<button><i class="fa fa-stop fa-2x"></i></button>
+						<p>stop</p>
+					</div>
+					<div class="inline">
+						<button><i class="fa fa-play fa-2x"></i></button>
+						<p>play/pause</p>
+					</div>
+					<div class="inline">
+						<button><i class="fa fa-step-backward fa-2x"></i></button>
+						<p>beginning</p>
+					</div>
+				</div>
+				
+				<select name="category">
+					<option>Sports</option>
+					<option>Politics</option>
+					<option>Entertainment</option>
+					<option>Weather</option>
+					<option>Education</option>
+				</select>
+				
+				<input type="submit" value="Upload File" />
+			</form>
+		</div>
 	</body>
 </html>
