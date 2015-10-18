@@ -106,13 +106,9 @@ $(document).on("click", "#titleStop", function() {
 
     // let's save it locally
     $('#output').text('Handing off the file now...');
-    //var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
     fd.append("titleName", 'test.mp3');
     fd.append("titleFile", titleBlop);
-
-    var click = document.createEvent("Event");
-    click.initEvent("click", true, true);
 });
 
 // Click to stop recording article
@@ -164,22 +160,13 @@ $(document).on("click", "#articleStop", function() {
 
     // let's save it locally
     $('#output').text('Handing off the file now...');
-    //var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
     fd.append("articleName", 'test.mp3');
     fd.append("articleFile", articleBlop);
-
-    var url = (window.URL || window.webkitURL).createObjectURL(articleBlop);
-    var link = window.document.createElement('a');
-    link.href = url;
-    link.download = 'output.mp3';
-    var click = document.createEvent("Event");
-    click.initEvent("click", true, true);
-    link.dispatchEvent(click);
 });
 
 $(document).on("click", "#upload", function() {
-    var cate = $('#category option:selected').text();
+    var cate = $('#category').val();
     fd.append("category", cate);
 
     $.ajax({
