@@ -1,30 +1,34 @@
-/*
-
-
-*/
-
-// alert("Hello");
 
 $(document).ready(function() {
-	$("#articlePlayButton").click(function() {
-		if ($("#articlePlayIcon").hasClass("fa-play")) {
-			$("#articlePlayIcon").removeClass("fa-play");
-			$("#articlePlayIcon").addClass("fa-pause");
+	$("#titlePlayButton").click(function() {
+		if ($("#titlePlayPic").hasClass("play")) {
+			$("#titlePlayPic").replaceWith("<img src=\"pause.png\" alt=\"play\" id=\"titlePlayPic\">");
 		} else {
-			$("#articlePlayIcon").removeClass("fa-pause");
-			$("#articlePlayIcon").addClass("fa-play");
+			$("#titlePlayPic").replaceWith("<img src=\"play.png\" alt=\"play\" class=\"play\" id=\"titlePlayPic\">");
 		}
-		console.log("Hello.");
 	});
 	
-	$("#titlePlayButton").click(function() {
-		if ($("#titlePlayIcon").hasClass("fa-play")) {
-			$("#titlePlayIcon").removeClass("fa-play");
-			$("#titlePlayIcon").addClass("fa-pause");
+	$("#articlePlayButton").click(function() {
+		if ($("#articlePlayPic").hasClass("play")) {
+			$("#articlePlayPic").replaceWith("<img src=\"pause.png\" alt=\"play\" id=\"articlePlayPic\">");
 		} else {
-			$("#titlePlayIcon").removeClass("fa-pause");
-			$("#titlePlayIcon").addClass("fa-play");
+			$("#articlePlayPic").replaceWith("<img src=\"play.png\" alt=\"play\" class=\"play\" id=\"articlePlayPic\">");
 		}
-		console.log("Hello.");
+	});
+	
+	$("#titleMic").click(function() {
+		document.getElementById("titleMic").disabled = true;
+	});
+	
+	$("#articleMic").click(function() {
+		document.getElementById("articleMic").disabled = true;
+	});
+	
+	$("#titleStop").click(function() {
+		document.getElementById("titleMic").disabled = false;
+	});
+	
+	$("#articleStop").click(function() {
+		document.getElementById("articleMic").disabled = false;
 	});
 });

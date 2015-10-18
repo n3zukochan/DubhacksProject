@@ -6,9 +6,9 @@
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "mic.png",
     "default_popup": "upload.html",
-	"default_title": "Click here!"
+	"default_title": "Submit some files!"
   },
   "permissions": [
     "activeTab",
