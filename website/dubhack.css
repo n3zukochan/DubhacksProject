@@ -3,6 +3,15 @@
 */
 
 body {
-    background-image: url("style/img/background.jpg");
+    background-image: url("Abstract-Cool-Background.jpg");
     background-size: cover;
+}
+
+h1 {
+    color: #bc6100;
+    text-align: center;
+    margin-top: 80px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: lighter;
+    font-size: 70px;
 }
