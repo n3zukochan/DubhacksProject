@@ -1,0 +1,8 @@
+/*
+    Css for potatoPotato site.
+*/
+
+body {
+    background-image: url("style/img/background.jpg");
+    background-size: cover;
+}
