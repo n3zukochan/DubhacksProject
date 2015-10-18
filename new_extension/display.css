@@ -1,0 +1,19 @@
+.top-buffer {
+	margin-top: 15px;
+}
+
+.big-buffer {
+	margin-top: 25px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.bottom-squeeze {
+	margin-bottom: 0px;
+}
+
+#header {
+	background-color: #FF9ECB;
+}

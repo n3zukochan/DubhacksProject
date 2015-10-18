@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+	
 		<link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
 				
 		<script src="jquery-1.11.3.min.js"></script>
 		<script src="script.js" type="text/javascript"></script>
+        <script src="recorder.js" type="text/javascript"></script>
+		
+		<style>
+			#categoryLabel {
+				font-weight: bold;
+			}
+		</style>
 	</head>
 	
 	<body>
+        <!-- Debugging code -->
+        <p id="output"> Ready to record!</p>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-2"><h4>Title</h4></div>
+				<div class="col-xs-2"><h4>Title:</h4></div>
 				<div class="col-xs-2">
-					<button type="button"><img src="mic.png" alt="record"></button>
+					<button type="button" id="titleMic"><img src="mic.png" alt="record"></button>
 					<p>record</p>
 				</div>
 				<div class="col-xs-2">
-					<button type="button"><img src="stop.png" alt="stop"></button>
+					<button type="button" id="titleStop"><img src="stop.png" alt="stop"></button>
 					<p>stop</p>
 				</div>
 				<div class="col-xs-2">
-					<button type="button" id="titlePlayButton"><img src="play.png" alt="play" id="titlePlayPic"></button>
+					<button type="button" id="titlePlayButton"><img src="play.png" alt="play" class="play" id="titlePlayPic"></button>
 					<p>play/pause</p>
 				</div>
 				<div class="col-xs-2">
@@ -31,17 +42,17 @@
 			</div>
 				
 			<div class="row">
-				<div class="col-xs-2"><h4>Article</h4></div>
+				<div class="col-xs-2"><h4>Article:</h4></div>
 				<div class="col-xs-2">
-					<button type="button"><img src="mic.png" alt="record"></button>
+					<button type="button" id="articleMic"><img src="mic.png" alt="record"></button>
 					<p>record</p>
 				</div>
 				<div class="col-xs-2">
-					<button type="button"><img src="stop.png" alt="stop"></button>
+					<button type="button" id="articleStop"><img src="stop.png" alt="stop"></button>
 					<p>stop</p>
 				</div>
 				<div class="col-xs-2">
-					<button type="button" id="articlePlayButton"><img src="play.png" alt="play" id="articlePlayPic"></button>
+					<button type="button" id="articlePlayButton"><img src="play.png" alt="play" class="play" id="articlePlayPic"></button>
 					<p>play/pause</p>
 				</div>
 				<div class="col-xs-2">
@@ -50,14 +61,18 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-3"></div>
+			<div class="col-xs-1"></div>
+				<div class="col-xs-2" id="categoryLabel">Category:</div>
 				<div class="col-xs-2">
-					<select name="category">
-						<option>Sports</option>
-						<option>Politics</option>
+					<select id="category" name="category">
+						<option>Tech</option>
 						<option>Entertainment</option>
-						<option>Weather</option>
-						<option>Education</option>
+						<option>Politics</option>
+						<option>Sports</option>
+						<option>Health</option>
+						<option>World</option>
+						<option>U.S.</option>
+						<option>Travel</option>
 					</select>
 				</div>
 				<div class="col-xs-2"></div>
@@ -70,8 +85,9 @@
 			<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 			<div>Icons made by <a href="http://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 			<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-			-->
+			<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 			
+			-->
 		</div>
 	</body>
 </html>
