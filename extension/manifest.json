@@ -12,6 +12,7 @@
 		    "scripts": ["background.js"]
 		}
 	},
+	"icons": { "16": "mic-16.png", "128": "mic-128.png" },
 
     "permissions": [
         "https://ajax.googleapis.com/",
