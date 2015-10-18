@@ -1,5 +1,5 @@
-
 $(document).ready(function() {
+    // Change Play to Pause
 	$("#titlePlayButton").click(function() {
 		if ($("#titlePlayPic").hasClass("play")) {
 			$("#titlePlayPic").replaceWith("<img src=\"pause.png\" alt=\"play\" id=\"titlePlayPic\">");
@@ -8,6 +8,7 @@ $(document).ready(function() {
 		}
 	});
 	
+    // Change Pause to Play
 	$("#articlePlayButton").click(function() {
 		if ($("#articlePlayPic").hasClass("play")) {
 			$("#articlePlayPic").replaceWith("<img src=\"pause.png\" alt=\"play\" id=\"articlePlayPic\">");
@@ -15,7 +16,8 @@ $(document).ready(function() {
 			$("#articlePlayPic").replaceWith("<img src=\"play.png\" alt=\"play\" class=\"play\" id=\"articlePlayPic\">");
 		}
 	});
-	
+
+/*	
 	$("#titleMic").click(function() {
 		document.getElementById("titleMic").disabled = true;
 	});
@@ -31,4 +33,5 @@ $(document).ready(function() {
 	$("#articleStop").click(function() {
 		document.getElementById("articleMic").disabled = false;
 	});
+*/
 });
