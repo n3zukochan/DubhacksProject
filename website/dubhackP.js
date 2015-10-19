@@ -1,6 +1,7 @@
 //js linked to dubhackP.html
 
 $(document).ready(function() {
+    var pressing = false;
 
     // var yes = false;
     // var no = false;
@@ -64,7 +65,19 @@ $(document).ready(function() {
         annyang.addCommands(commands);
 
         annyang.debug();
-        annyang.start();
+        
+        $(window).keydown(function(e) {
+            if (e.keyCode === 32 && !pressing) {
+                pressing = true;
+                annyang.start();
+            }
+        });
+        $(window).keyup(function(e) {
+            if (e.keyCode === 32) {
+                pressing = false;
+                annyang.abort();
+            }
+        });
     }
 
     function fetchCategory(category) {
