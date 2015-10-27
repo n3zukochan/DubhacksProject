@@ -2,7 +2,7 @@
 
 ## Overview
 
-PotatoPotato is a web project that lets people records an audio input of news article and helps other people who are visually impaired listen to news articles everyday. This project consists of a website and a Chrome App that make uses of **annyang** JavaScript SpeechRecognition library and **getUserMedia** API.
+unison.news is a web project that lets people records an audio input of news article and helps other people who are visually impaired listen to news articles everyday. This project consists of a website and a Chrome App that make uses of **annyang** JavaScript SpeechRecognition library and **getUserMedia** API.
 
 ## Features
 
